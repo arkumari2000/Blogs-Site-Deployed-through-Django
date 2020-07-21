@@ -22,7 +22,7 @@ html5, CSS3, Bootstrap4
 5. now go in the directory of the folder through terminal and then in folder
 5. Run: python manage.py runserver.
 
- # For any query regarding this project email on: arkumari2000@gmail.com
+ ### For any query regarding this project email on: arkumari2000@gmail.com
  
  Happy Coding,
  Thank you,
