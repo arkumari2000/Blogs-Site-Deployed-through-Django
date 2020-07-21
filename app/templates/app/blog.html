@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+{% block content %}
+<div class="banner" style="background-image: url({{blog.image.url}});">
+    <div class="container">
+        <div class="banner-text">
+            <div class="banner-heading">
+                {{blog.title}}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="shadow-lg p-3 mb-5 bg-white rounded boxed">{{blog.content}}
+        <footer class="blockquote-footer">{{blog.author}}</footer>
+        <small class="text-muted">{{blog.date_posted}}</small>
+
+        {% if blog.author == user %}
+        <div>
+            <a class="btn btn-small btn-secondary" href="{% url 'blog_update' blog.id %}">Update</a>
+            <a class="btn btn-small btn-danger" href="{% url 'blog_delete' blog.id %}">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

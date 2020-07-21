@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% block title %}
+Post
+{% endblock title %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <form method="POST" class="register-form my-3 p-4" enctype="multipart/form-data">
+        <center>
+            <h4>Post Blog</h4>
+        </center>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{form.title|as_crispy_field}}
+        </fieldset>
+        <fieldset class="form-group">
+            {{form.content|as_crispy_field}}
+        </fieldset>
+        <fieldset class="form-group">
+            {{form.image|as_crispy_field}}
+        </fieldset>
+        {% if form.errors %}
+        <span>{{ form.errors }}</span>
+        {% endif %}
+        <button type="submit" class="btn btn-large btn-success">Submit</button>
+    </form>
+</div>
+{% endblock %}

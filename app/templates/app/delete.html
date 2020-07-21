@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% block title %}
+Delete
+{% endblock title %}
+{% block content %}
+{% load crispy_forms_tags %}
+<div class="container">
+    <form method="POST" class="register-form my-3 p-4">
+        <center>
+            <h4>Delete Blog</h4>
+        </center>
+        {% csrf_token %}
+        <p>Are you sure you want to delete the Blog: {{blog.title}}?</p>
+        <button type="submit" class="btn btn-large btn-outline-danger">Yes,Delete</button>
+        <a class="btn btn-large btn-outline-warning" href="{% url 'blog' blog.id %}">Cancel</a>
+        {% if form.errors %}
+        <span>{{ form.errors }}</span>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

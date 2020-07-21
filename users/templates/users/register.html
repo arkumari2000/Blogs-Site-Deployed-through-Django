@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+{% block title %}
+Register
+{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <form method="POST" class="register-form my-3 p-4">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{form.username|as_crispy_field}}
+        </fieldset>
+        <fieldset class="form-group">
+            {{form.email|as_crispy_field}}
+        </fieldset>
+        <fieldset class="form-group">
+            {{form.password1|as_crispy_field}}
+        </fieldset>
+        <fieldset class="form-group">
+            {{form.password2|as_crispy_field}}
+        </fieldset>
+        <button type="submit" class="btn btn-large btn-success mt-3">Submit</button>
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% block title %}
+Profile
+{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+<div class="container" style="height: 73vh;">
+    <div class="row">
+        {% if user.profile.profile_pic %}
+        <div class="col-md-4 register-form my-3 p-4"><img src="{{request.user.profile.profile_pic.url}}" height="300"
+                width="330">
+        </div>
+        {% else %}
+        <div class="col-md-4 register-form my-3 p-4"><img src="/static/images/205607.jpg" height="300" width="330">
+        </div>
+        {% endif %}
+        <div class="col-md-8">
+            <form method="POST" class="register-form my-3 p-4" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- <fieldset class="form-group">
+                    {{form.name|as_crispy_field}}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{form.email|as_crispy_field}}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{form.phone|as_crispy_field}}
+                </fieldset>
+                <fieldset class="form-group">
+                    {{form.profile_pic|as_crispy_field}}
+                </fieldset> -->
+                {{form|crispy}}
+                <button type="submit" class="btn btn-large btn-success mt-3">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
